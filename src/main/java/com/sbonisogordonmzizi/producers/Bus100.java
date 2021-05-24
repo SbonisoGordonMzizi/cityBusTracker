@@ -56,7 +56,7 @@ public class Bus100 {
         //get bus gps coordinates as arrayList<String>
         ArrayList<String> busGPS = getGPSCoordinates(filename);
         for (String data : busGPS) {
-            ProducerRecord<String, String> record = new ProducerRecord<String, String>(busTopic, busID, data);
+            ProducerRecord<String, String> record = new ProducerRecord<String, String>(busTopic, busID, data+"  "+busID);
             //send data
 
             producer.send(record, new Callback() {
