@@ -28,6 +28,65 @@
         zoomOffset: -1,
         accessToken: 'pk.eyJ1Ijoic2Jvbmlzb2dvcmRvbm16aXppIiwiYSI6ImNrcDJ4cjRscTBhNGEydW1rc2NzeW94OG4ifQ.qX92TtdYdCAJVSkjtguZsg'
         }).addTo(mymap);
+        /*L.marker([-29.85641, 31.03621]).addTo(mymap);
+        var marker1 = L.marker([-29.859040816719176,31.02666735649109]).addTo(mymap);
+        */
+        cityLineBusMarker = []
+        circleLineBusMarker = []
+        beachLineBusMarker = []
+
+        var source1 = new EventSource('/topic/beachLineBuses');
+         source1.addEventListener('message',function(e){
+            
+            console.log("Message");
+            obj = JSON.parse(e.data);
+            console.log(typeof obj);
+            console.log(obj);
+            
+            for(var i = 0; i < cityLineBusMarker.length; i++){
+                mymap.removeLayer(cityLineBusMarker[i]);
+            }
+               
+            var marker1 = L.marker([obj[1],obj[0]]).addTo(mymap);
+            cityLineBusMarker.push(marker1);
+            
+        },false);
+        var source2 = new EventSource('/topic/circleLineBuses');
+         source2.addEventListener('message',function(e){
+            
+            console.log("Message");
+            obj = JSON.parse(e.data);
+            console.log(typeof obj);
+            console.log(obj);
+            
+            for(var i = 0; i < circleLineBusMarker.length; i++){
+                mymap.removeLayer(circleLineBusMarker[i]);
+            }
+               
+            var marker1 = L.marker([obj[1],obj[0]]).addTo(mymap);
+            circleLineBusMarker.push(marker1);
+            
+        },false);
+
+        var source3 = new EventSource('/topic/beachLineBuses');
+         source3.addEventListener('message',function(e){
+            
+            console.log("Message");
+            obj = JSON.parse(e.data);
+            console.log(typeof obj);
+            console.log(obj);
+            
+            for(var i = 0; i < beachLineBusMarker.length; i++){
+                mymap.removeLayer(beachLineBusMarker[i]);
+            }
+               
+            var marker1 = L.marker([obj[1],obj[0]]).addTo(mymap);
+            beachLineBusMarker.push(marker1);
+            
+        },false);
+        
+
+
 
     </script>
 </body>

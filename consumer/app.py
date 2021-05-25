@@ -16,7 +16,7 @@ def get_messages(topicname):
     client = get_kafka_client()
     def events():
         for message in client.topics[topicname].get_simple_consumer():
-                yield '{0}\n\n'.format(message.value.decode())
+                yield 'data:{0}\n\n'.format(message.value.decode())
     return Response(events(), mimetype="text/event-stream")
     
 
