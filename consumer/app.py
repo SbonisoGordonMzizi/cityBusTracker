@@ -40,5 +40,5 @@ def get_messages_beach():
     return Response(events(), mimetype="text/event-stream")
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8080)
+    app.run(debug=True, port=8080,host="192.168.1.6")
 

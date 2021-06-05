@@ -25,16 +25,16 @@ public class Bus200 {
 
         if (busroute.toLowerCase().equals("cityline")) {
             String busTopic = "cityLineBuses";
-            String filename= "/home/viceblack/programming/javaProjects/cityBusTracker/src/main/resources/cityLineGPSCoordinates.json";
+            String filename= "/home/viceblack/Programming/JavaProjects/cityBusTracker/src/main/resources/cityLineGPSCoordinates.json";
             mainLogic(busID,busTopic,filename);
 
         } else if (busroute.toLowerCase().equals("beachline")) {
             String busTopic = "beachLineBuses";
-            String filename= "/home/viceblack/programming/javaProjects/cityBusTracker/src/main/resources/beachLineGPSCoordinates.json";
+            String filename= "/home/viceblack/Programming/JavaProjects/cityBusTracker/src/main/resources/beachLineGPSCoordinates.json";
             mainLogic(busID,busTopic,filename);
         }else{
             String busTopic = "circleLineBuses";
-            String filename = "/home/viceblack/programming/javaProjects/cityBusTracker/src/main/resources/circleLineGPSCoordinates.json";
+            String filename = "/home/viceblack/Programming/JavaProjects/cityBusTracker/src/main/resources/circleLineGPSCoordinates.json";
             mainLogic(busID,busTopic,filename);
         }
     }
@@ -56,7 +56,8 @@ public class Bus200 {
         //get bus gps coordinates as arrayList<String>
         ArrayList<String> busGPS = getGPSCoordinates(filename);
         for (String data : busGPS) {
-            ProducerRecord<String, String> record = new ProducerRecord<String, String>(busTopic, busID, data);
+            ProducerRecord<String, String> record = new ProducerRecord<String, String>(busTopic, busID, data+" "+busID);
+            //ProducerRecord<String, String> record = new ProducerRecord<String, String>(busTopic, busID, data);
             //send data
 
             producer.send(record, new Callback() {

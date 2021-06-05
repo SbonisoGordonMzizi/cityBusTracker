@@ -13,11 +13,11 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Durban City Bus Tracker</title>
+    <title>City Bus Tracker</title>
 </head>
-<body>
-    <h1>Durban City Bus Tracker</h1>
-    <div id="mapid" style="width: 1400px; height: 900px; "></div>
+<body style="background-color: rgb(71, 69, 69);">
+    <h1 style="text-align: center; color: rgb(7, 28, 122);">City Bus Tracker</h1>
+    <div id="mapid" style="width: 100%; height: 550px; align-content: center;"></div>
     <script>
         var mymap = L.map('mapid').setView([-29.883333, 31.049999], 14);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -31,59 +31,115 @@
         /*L.marker([-29.85641, 31.03621]).addTo(mymap);
         var marker1 = L.marker([-29.859040816719176,31.02666735649109]).addTo(mymap);
         */
-        cityLineBusMarker = []
-        circleLineBusMarker = []
-        beachLineBusMarker = []
+        cityLineBusMarker1 = []
+        circleLineBusMarker1 = []
+        beachLineBusMarker1 = []
+        cityLineBusMarker2 = []
+        circleLineBusMarker2 = []
+        beachLineBusMarker2 = []
 
+        //CityLine EnventListener
         var source1 = new EventSource('/topic/cityLineBuses');
          source1.addEventListener('message',function(e){
             
-            console.log("Message");
-            obj = JSON.parse(e.data);
-            console.log(typeof obj);
-            console.log(obj);
+            var varsting = e.data.split(" ");
+            if(varsting[1] === "Bus600"){
+                console.log(varsting);
             
-            for(var i = 0; i < cityLineBusMarker.length; i++){
-                mymap.removeLayer(cityLineBusMarker[i]);
-            }
+                obj = JSON.parse(varsting[0]);
+            
+                for(var i = 0; i < cityLineBusMarker1.length; i++){
+                    mymap.removeLayer(cityLineBusMarker1[i]);
+                }
                
-            var marker1 = L.marker([obj[1],obj[0]]).addTo(mymap);
-            cityLineBusMarker.push(marker1);
+                var marker1 = L.marker([obj[1],obj[0]]).addTo(mymap);
+                cityLineBusMarker1.push(marker1);
             
+           }
+           if(varsting[1] === "Bus500"){
+                console.log(varsting);
+            
+                obj = JSON.parse(varsting[0]);
+            
+                for(var i = 0; i < cityLineBusMarker2.length; i++){
+                    mymap.removeLayer(cityLineBusMarker2[i]);
+                }
+               
+                var marker1 = L.marker([obj[1],obj[0]]).addTo(mymap);
+                cityLineBusMarker2.push(marker1);
+            
+           }
         },false);
+
+        //CircleLine EnventListener
         var source2 = new EventSource('/topic/circleLineBuses');
          source2.addEventListener('message',function(e){
             
-            console.log("Message");
-            obj = JSON.parse(e.data);
-            console.log(typeof obj);
-            console.log(obj);
+            var varsting = e.data.split(" ");
+            if(varsting[1] === "Bus400"){
+                console.log(varsting);
             
-            for(var i = 0; i < circleLineBusMarker.length; i++){
-                mymap.removeLayer(circleLineBusMarker[i]);
-            }
+                obj = JSON.parse(varsting[0]);
+            
+                for(var i = 0; i < circleLineBusMarker1.length; i++){
+                    mymap.removeLayer(circleLineBusMarker1[i]);
+                }
                
-            var marker1 = L.marker([obj[1],obj[0]]).addTo(mymap);
-            circleLineBusMarker.push(marker1);
+                var marker1 = L.marker([obj[1],obj[0]]).addTo(mymap);
+                circleLineBusMarker1.push(marker1);
+            
+           }
+           if(varsting[1] === "Bus300"){
+                console.log(varsting);
+            
+                obj = JSON.parse(varsting[0]);
+            
+                for(var i = 0; i < circleLineBusMarker2.length; i++){
+                    mymap.removeLayer(circleLineBusMarker2[i]);
+                }
+               
+                var marker1 = L.marker([obj[1],obj[0]]).addTo(mymap);
+                circleLineBusMarker2.push(marker1);
+            
+           }
             
         },false);
 
+        //BeachLine EnventListener
         var source3 = new EventSource('/topic/beachLineBuses');
          source3.addEventListener('message',function(e){
             
-            console.log("Message");
-            obj = JSON.parse(e.data);
-            console.log(typeof obj);
-            console.log(obj);
+            var varsting = e.data.split(" ");
+            if(varsting[1] === "Bus200"){
+                console.log(varsting);
             
-            for(var i = 0; i < beachLineBusMarker.length; i++){
-                mymap.removeLayer(beachLineBusMarker[i]);
-            }
+                obj = JSON.parse(varsting[0]);
+            
+                for(var i = 0; i < beachLineBusMarker1.length; i++){
+                    mymap.removeLayer(beachLineBusMarker1[i]);
+                }
                
-            var marker1 = L.marker([obj[1],obj[0]]).addTo(mymap);
-            beachLineBusMarker.push(marker1);
+                var marker1 = L.marker([obj[1],obj[0]]).addTo(mymap);
+                beachLineBusMarker1.push(marker1);
+            
+           }
+           if(varsting[1] === "Bus100"){
+                console.log(varsting);
+            
+                obj = JSON.parse(varsting[0]);
+            
+                for(var i = 0; i < beachLineBusMarker2.length; i++){
+                    mymap.removeLayer(beachLineBusMarker2[i]);
+                }
+               
+                var marker1 = L.marker([obj[1],obj[0]]).addTo(mymap);
+                beachLineBusMarker2.push(marker1);
+            
+           }
             
         },false);
+
+       
         
 
 
