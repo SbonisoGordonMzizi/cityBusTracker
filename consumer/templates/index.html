@@ -43,7 +43,7 @@
          source1.addEventListener('message',function(e){
             
             var varsting = e.data.split(" ");
-            if(varsting[1] === "Bus600"){
+            if(varsting[1] === "Bus600city"){
                 console.log(varsting);
             
                 obj = JSON.parse(varsting[0]);
@@ -56,7 +56,7 @@
                 cityLineBusMarker1.push(marker1);
             
            }
-           if(varsting[1] === "Bus500"){
+           if(varsting[1] === "Bus500city"){
                 console.log(varsting);
             
                 obj = JSON.parse(varsting[0]);
@@ -76,7 +76,7 @@
          source2.addEventListener('message',function(e){
             
             var varsting = e.data.split(" ");
-            if(varsting[1] === "Bus400"){
+            if(varsting[1] === "Bus400circle"){
                 console.log(varsting);
             
                 obj = JSON.parse(varsting[0]);
@@ -89,7 +89,7 @@
                 circleLineBusMarker1.push(marker1);
             
            }
-           if(varsting[1] === "Bus300"){
+           if(varsting[1] === "Bus300circle"){
                 console.log(varsting);
             
                 obj = JSON.parse(varsting[0]);
@@ -110,7 +110,7 @@
          source3.addEventListener('message',function(e){
             
             var varsting = e.data.split(" ");
-            if(varsting[1] === "Bus200"){
+            if(varsting[1] === "Bus200beach"){
                 console.log(varsting);
             
                 obj = JSON.parse(varsting[0]);
@@ -123,7 +123,7 @@
                 beachLineBusMarker1.push(marker1);
             
            }
-           if(varsting[1] === "Bus100"){
+           if(varsting[1] === "Bus100beach"){
                 console.log(varsting);
             
                 obj = JSON.parse(varsting[0]);

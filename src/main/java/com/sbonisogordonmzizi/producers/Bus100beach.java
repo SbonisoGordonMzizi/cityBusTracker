@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Scanner;
 
-public class Bus400 {
+public class Bus100beach {
     public static void main(String... args) {
         busRouteList();
         Scanner scanner = new Scanner(System.in);
-        String busID = "Bus400";
+        String busID = "Bus100beach";
         System.out.print("Enter Bus Route :");
         String busroute = scanner.nextLine();
         scanner.close();
@@ -135,13 +135,13 @@ public class Bus400 {
                                 }
                             }
                         }
-                        }
                     }
                 }
-            }catch (FileNotFoundException e){
-                System.out.println(e.getMessage());
             }
-            return gpsCoordinates;
+        }catch (FileNotFoundException e){
+            System.out.println(e.getMessage());
+        }
+        return gpsCoordinates;
     }
 }
 

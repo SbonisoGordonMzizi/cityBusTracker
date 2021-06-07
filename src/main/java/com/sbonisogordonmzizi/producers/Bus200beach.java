@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Scanner;
 
-public class Bus100 {
+public class Bus200beach {
     public static void main(String... args) {
         busRouteList();
         Scanner scanner = new Scanner(System.in);
-        String busID = "Bus100";
+        String busID = "Bus200beach";
         System.out.print("Enter Bus Route :");
         String busroute = scanner.nextLine();
         scanner.close();
@@ -57,6 +57,7 @@ public class Bus100 {
         ArrayList<String> busGPS = getGPSCoordinates(filename);
         for (String data : busGPS) {
             ProducerRecord<String, String> record = new ProducerRecord<String, String>(busTopic, busID, data+" "+busID);
+            //ProducerRecord<String, String> record = new ProducerRecord<String, String>(busTopic, busID, data);
             //send data
 
             producer.send(record, new Callback() {
@@ -76,7 +77,6 @@ public class Bus100 {
                         exceptionProducer.send(recodeSentUnSuccessfully);
                         exceptionProducer.flush();
                     }
-
                 }
             });
             //flush data to topic

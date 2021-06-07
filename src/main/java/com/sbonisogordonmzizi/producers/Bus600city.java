@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Scanner;
 
-public class Bus300 {
+public class Bus600city {
     public static void main(String... args) {
         busRouteList();
         Scanner scanner = new Scanner(System.in);
-        String busID = "Bus300";
+        String busID = "Bus600city";
         System.out.print("Enter Bus Route :");
         String busroute = scanner.nextLine();
         scanner.close();
